@@ -17,11 +17,10 @@ echo "Configuring the deploy"
 CFLAGS='-fPIC' ../configure  \
 --prefix=$SOFT_DIR-gcc-${GCC_VERSION}-mpi-${OPENMPI_VERSION} \
 --enable-mpi \
---enable-openmp \
 --enable-shared \
---enable-single \
 --enable-threads \
---enable-sse2
+--enable-openmp \
+--with-pic
 make install
 echo "Creating the modules file directory ${LIBRARIES_MODULES}"
 mkdir -p ${LIBRARIES_MODULES}/${NAME}
@@ -61,19 +60,3 @@ module add ${NAME}/${VERSION}-gcc-${GCC_VERSION}-mpi-${OPENMPI_VERSION}
 echo "PATH is : $PATH"
 echo "LD_LIBRARY_PATH is $LD_LIBRARY_PATH"
 # confirm openmpi
-
-cd ${WORKSPACE}
-echo "Working directory is $PWD with : "
-ls
-echo "LD_LIBRARY_PATH is $LD_LIBRARY_PATH"
-echo "Compiling serial code"
-g++  -L${FFTW_DIR}/lib -I${FFTW_DIR}/include -lfftw3 -lm hello-world.cpp -o hello-world
-echo "executing serial code"
-./hello-world
-
-# now try mpi version
-echo "Compiling MPI code"
-mpic++ hello-world-mpi.cpp -L${FFTW_DIR}/lib -I${FFTW_DIR}/include -lfftw3 -lfftw3_mpi  -o hello-world-mpi
-#mpic++ -lfftw3 hello-world-mpi.cpp -o hello-world-mpi -L$FFTW_DIR/lib -I$FFTW_DIR/include
-echo "executing MPI code"
-mpirun ./hello-world-mpi

@@ -3,7 +3,7 @@
 module add ci
 module add gmp
 module add mpfr
-module add mpc 
+module add mpc
 module add gcc/${GCC_VERSION}
 module add openmpi/${OPENMPI_VERSION}-gcc-${GCC_VERSION}
 echo ""
@@ -42,18 +42,3 @@ cp modules/${VERSION}-gcc-${GCC_VERSION}-mpi-${OPENMPI_VERSION} ${LIBRARIES_MODU
 module avail
 #module add  openmpi-x86_64
 module add ${NAME}/${VERSION}-gcc-${GCC_VERSION}-mpi-${OPENMPI_VERSION}
-cd ${WORKSPACE}
-echo "Working directory is $PWD with : "
-ls
-echo "LD_LIBRARY_PATH is $LD_LIBRARY_PATH"
-echo "Compiling serial code"
-g++  -L${FFTW_DIR}/lib -I${FFTW_DIR}/include -lfftw3 -lm hello-world.cpp -o hello-world
-echo "executing serial code"
-./hello-world
-
-# now try mpi version
-echo "Compiling MPI code"
-mpic++ hello-world-mpi.cpp -L${FFTW_DIR}/lib -I${FFTW_DIR}/include -lfftw3 -lfftw3_mpi  -o hello-world-mpi
-#mpic++ -lfftw3 hello-world-mpi.cpp -o hello-world-mpi -L$FFTW_DIR/lib -I$FFTW_DIR/include
-echo "Disabling executing MPI code for now"
-mpirun ./hello-world-mpi

@@ -39,11 +39,8 @@ cd build-${BUILD_NUMBER}
 CFLAGS='-fPIC' ../configure \
 --prefix=$SOFT_DIR-gcc-${GCC_VERSION}-mpi-${OPENMPI_VERSION} \
 --enable-mpi \
---enable-openmp \
 --enable-shared \
---enable-single \
 --enable-threads \
---enable-sse \
---enable-sse2 \
+--enable-openmp \ 
 --with-pic
 make -j2
