@@ -43,4 +43,4 @@ CFLAGS='-fPIC' ../configure \
 --enable-threads \
 --enable-openmp \
 --with-pic
-make -j2
+make 
