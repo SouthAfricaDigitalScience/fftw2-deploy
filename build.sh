@@ -33,10 +33,8 @@ fi
 tar -xvzf ${SRC_DIR}/${SOURCE_FILE} -C ${WORKSPACE} --skip-old-files
 cd ${WORKSPACE}/${NAME}-${VERSION}
 # we need single precision and sse for gromacs
-mkdir build-${BUILD_NUMBER}
-cd build-${BUILD_NUMBER}
 #
-CFLAGS='-fPIC' ../configure \
+CFLAGS='-fPIC' ./configure \
 --prefix=$SOFT_DIR-gcc-${GCC_VERSION}-mpi-${OPENMPI_VERSION} \
 --enable-mpi \
 --enable-shared \
@@ -44,4 +42,4 @@ CFLAGS='-fPIC' ../configure \
 --enable-openmp \
 --with-pic
 
-make -j2 
+make -j2

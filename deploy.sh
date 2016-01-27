@@ -10,7 +10,7 @@ module add gcc/${GCC_VERSION}
 module add openmpi/${OPENMPI_VERSION}-gcc-${GCC_VERSION}
 # we need sse and single precision for gromacs
 echo ${SOFT_DIR}-gcc-${GCC_VERSION}-mpi-${OPENMPI_VERSION}
-cd ${WORKSPACE}/${NAME}-${VERSION}/build-${BUILD_NUMBER}
+cd ${WORKSPACE}/${NAME}-${VERSION}/
 make distclean
 echo "All tests have passed, will now build into ${SOFT_DIR}-gcc-${GCC_VERSION}"
 echo "Configuring the deploy"
