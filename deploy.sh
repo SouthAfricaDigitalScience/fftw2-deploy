@@ -14,7 +14,7 @@ cd ${WORKSPACE}/${NAME}-${VERSION}/
 make distclean
 echo "All tests have passed, will now build into ${SOFT_DIR}-gcc-${GCC_VERSION}"
 echo "Configuring the deploy"
-CFLAGS='-fPIC' ../configure  \
+CFLAGS='-fPIC' ./configure  \
 --prefix=$SOFT_DIR-gcc-${GCC_VERSION}-mpi-${OPENMPI_VERSION} \
 --enable-mpi \
 --enable-shared \
