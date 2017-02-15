@@ -42,4 +42,4 @@ CFLAGS='-fPIC' ./configure \
 --enable-openmp \
 --with-pic
 
-make -j2
+make

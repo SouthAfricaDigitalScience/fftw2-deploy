@@ -41,13 +41,13 @@ module add gcc/${GCC_VERSION}
 module add openmpi/${OPENMPI_VERSION}-gcc-${GCC_VERSION}
 
 module-whatis   "$NAME $VERSION. compiled for OpenMPI ${OPENMPI_VERSION} and GCC version ${GCC_VERSION}"
-setenv       FFTW_VERSION       $VERSION
+setenv       FFTW_VERSION               $VERSION
 setenv       FFTW_DIR           $::env(CVMFS_DIR)/$::env(SITE)/$::env(OS)/$::env(ARCH)/$NAME/$VERSION-gcc-${GCC_VERSION}-mpi-${OPENMPI_VERSION}
 
-prepend-path 	  PATH            $::env(FFTW_DIR)/bin
-prepend-path    PATH            $::env(FFTW_DIR)/include
-prepend-path    PATH            $::env(FFTW_DIR)/bin
-prepend-path    MANPATH         $::env(FFTW_DIR)/man
+prepend-path 	  PATH                         $::env(FFTW_DIR)/bin
+prepend-path    PATH                         $::env(FFTW_DIR)/include
+prepend-path    PATH                         $::env(FFTW_DIR)/bin
+prepend-path    MANPATH                $::env(FFTW_DIR)/man
 prepend-path    LD_LIBRARY_PATH $::env(FFTW_DIR)/lib
 MODULE_FILE
 ) > ${LIBRARIES_MODULES}/${NAME}/${VERSION}-gcc-${GCC_VERSION}-mpi-${OPENMPI_VERSION}
